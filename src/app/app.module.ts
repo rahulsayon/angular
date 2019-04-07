@@ -7,6 +7,10 @@ import { AppComponent } from './app.component';
 import { ListEmployeesComponent } from './employee/list-employees.component';
 import { CreateEmployeeComponent } from './employee/create-employee.component';
 import { FormsModule } from '@angular/forms';
+import { SelectRequiredValidator } from './shared/select-required-validator.directive';
+import {  ConfirmEqualValidator } from './shared/confirm-equal-validator.directive';
+import { DisplayEmployeeComponent } from './employee/display-employee.component';
+import { EmployeeDetailsComponent } from './employee/employee-details.component';
 
 
 @NgModule({
@@ -14,7 +18,11 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     ListEmployeesComponent,
     CreateEmployeeComponent,
-
+    SelectRequiredValidator,
+    ConfirmEqualValidator,
+    DisplayEmployeeComponent,
+    EmployeeDetailsComponent,
+  
   ],
   imports: [
     BrowserModule,

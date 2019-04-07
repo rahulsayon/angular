@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Employee } from '../models/employee.models';
+import { MyService } from '../my.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-employee',
@@ -9,6 +11,7 @@ import { Employee } from '../models/employee.models';
 })
 export class CreateEmployeeComponent implements OnInit {
 
+  @ViewChild('employeeForm') public createEmployeeForm:NgForm;
   employee:Employee = {
     
     id:null,
@@ -18,7 +21,7 @@ export class CreateEmployeeComponent implements OnInit {
     phoneNumber:null,
     contactPreference:null,
     dateofBirth:null,
-    department:null,
+    department:'select',
     isActive:null,
     photopath:null,
 
@@ -39,13 +42,15 @@ export class CreateEmployeeComponent implements OnInit {
 
   //gender  = 'male'
 
-  constructor() { }
+  constructor(private empservice:MyService , private router:Router) { }
 
   ngOnInit() {
   }
 
-  saveEmployee(empForm :NgForm){
-    console.log(empForm.value)
+  saveEmployee():void{
+     this.empservice.save(this.employee);
+
+     this.router.navigate(['/list'])
   }
 
 }

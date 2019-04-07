@@ -1,65 +1,18 @@
+<!-- <h1 *ngIf="dataFromChild"> {{ dataFromChild.name  + '  ' + dataFromChild.email }}</h1>
+<span> ----- </span>
+<h1 #h1Variable>  </h1>
+<div *ngFor="let employee of employees">
+        <div (click) = "h1Variable.innerHTML=childComponent.employee.name" >
+                <app-display-employee #childComponent  [employee] ="employee"  (notify)="handleNotify($event)" ></app-display-employee>
+        </div>
+</div>     -->
+    
+<!-- <button (click)="nextEmployee()" class="btn btn-primary"> View Next Employee </button><br><br>
 
+    <app-display-employee [employee] ="employeeToDisplay"></app-display-employee> -->
 
-        <div class="panel panel-primary"  *ngFor="let employee of employees" >
-            <div class="panel-heading">{{ employee.name }}</div>
-            <div class="panel-body">
-                <div class="row" >
-                    <div class="col-md-4"  >
-
-                          <img class="imageClass" src="{{ employee.photopath }}">
-
-                    </div>
-                  <div class="col-md-8 ">
-                        <div class="row">
-                              <div class="cols-md-6">
-                                     Gender
-                              </div>
-                              <div class="cols-md-6">
-                                  :{{ employee.gender }}
-                             </div>
-                        </div> 
-
-                        <div class="row">
-                            <div class="cols-md-6">
-                                Contact Preference
-                          </div>
-                          
-                          <div class="cols-md-6">
-                              :{{ employee.contactPreference }}
-                          </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="cols-md-6">
-                                Email
-                           </div>
-                           <div class="cols-md-6">
-                              :{{ employee.email }}
-                           </div>
-                        </div>
-                      
-                     <div class="row">
-                        <div class="cols-md-6">
-                           Department
-                        </div>
-                    
-                      <div class="cols-md-6">
-                         :{{ employee.department }}
-                      </div>
-                     </div> 
-
-                     <div class="row">
-                    <div class="cols-md-6">
-                        Is Active
-                   </div>
-                   <div class="cols-md-6">
-                       :{{ employee.isActive }}
-                  </div>
+    <div *ngFor="let employee of employees">
+                <div (click)="onClick(employee.id)" >
+                        <app-display-employee  [employee] ="employee"  (notify)="handleNotify($event)"></app-display-employee>
                 </div>
-
-                  </div>
-              </div>    
-        </div> 
-     </div>      
-
-   
+    </div> 

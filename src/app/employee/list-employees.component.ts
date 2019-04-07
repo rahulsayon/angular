@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Employee } from '../models/employee.models';
+import { MyService } from '../my.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-employees',
@@ -8,45 +10,38 @@ import { Employee } from '../models/employee.models';
 })
 export class ListEmployeesComponent implements OnInit {
 
-   public employees:Employee[] = [
-        {
-            id:1,
-            name:'Rahul',
-            gender:'Male',
-            contactPreference:'Email',
-            email:'Rahulsayon@gmail.com',
-            dateofBirth : new Date('10/12/1998'),
-            department:'IT',
-            isActive:true,
-            photopath:'assets/images/1.jpg'
-        },
-        {
-          id:2,
-          name:'Raj',
-          gender:'Male',
-          contactPreference:'Email',
-          email:'Rahul@gmail.com',
-          dateofBirth : new Date('10/12/2018'),
-          department:'CSE',
-          isActive:true,
-          photopath:'assets/images/2.jpeg'
-        },
-      {
-        id:3,
-        name:'Ranjan',
-        gender:'Male',
-        contactPreference:'Email',
-        email:'Ranjan@gmail.com',
-        dateofBirth : new Date('10/12/2018'),
-        department:'CE',
-        isActive:true,
-        photopath:'assets/images/3.jpg'
-      },
-   ]
+  employees:Employee[];
+  employeeToDisplay: Employee;
+  public  arrayIndex ;
+  public  dataFromChild;
 
-  constructor() { }
+  constructor(private list:MyService , private router:Router) { }
 
   ngOnInit() {
+    this.employees = this.list.getEmployees();
+    this.employeeToDisplay = this.employees[0];
+
   }
+  
+  nextEmployee():void{
+    if(this.arrayIndex <= 2){
+      this.employeeToDisplay = this.employees[this.arrayIndex]
+      this.arrayIndex++;
+    }
+    else{
+        this.employeeToDisplay = this.employees[0];
+        this.arrayIndex = 1;
+    }
+  }
+
+  handleNotify(eventData:string){
+   this.dataFromChild = eventData;
+  }
+
+  onClick(emp){
+      this.router.navigate(['employee' , emp])
+     // this.router.navigateByUrl('employee/'+ emp)
+  }
+
 
 }
