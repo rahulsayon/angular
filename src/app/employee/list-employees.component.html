@@ -11,8 +11,23 @@
 
     <app-display-employee [employee] ="employeeToDisplay"></app-display-employee> -->
 
-    <div *ngFor="let employee of employees">
+    <div class="form-group">
+        <input type="text"  style="width: 300px" 
+        [(ngModel)]="searchTerm" name="emp" class="form-control" placeholder="Search By Name"  >
+    </div>
+    
+    
+     <button class="btn btn-primary" (click)="changeEmployeeName()" > ChangeName </button><br/><br/><br/>
+
+    <!-- <div *ngFor="let employee of employees |  employeeFilter:searchTerm" (mousemove)="onMouseMove()" >
                 <div (click)="onClick(employee.id)" >
                         <app-display-employee  [employee] ="employee"  (notify)="handleNotify($event)"></app-display-employee>
                 </div>
-    </div> 
+    </div> -->
+
+<div *ngFor="let employee of filteredEmployees" (mousemove)="onMouseMove()" >
+        <div  >
+                <app-display-employee  [employee] ="employee" [searchTerm] = "searchTerm" 
+                 (notify)="handleNotify($event)"  (notifyDelete)= "onDeleteNotification($event)" ></app-display-employee>
+        </div>
+</div>

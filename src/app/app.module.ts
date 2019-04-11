@@ -11,6 +11,8 @@ import { SelectRequiredValidator } from './shared/select-required-validator.dire
 import {  ConfirmEqualValidator } from './shared/confirm-equal-validator.directive';
 import { DisplayEmployeeComponent } from './employee/display-employee.component';
 import { EmployeeDetailsComponent } from './employee/employee-details.component';
+import { EmployeeFilterPipe } from './employee/employee-filter.pipe';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { EmployeeDetailsComponent } from './employee/employee-details.component'
     ConfirmEqualValidator,
     DisplayEmployeeComponent,
     EmployeeDetailsComponent,
+    EmployeeFilterPipe,
+    PageNotFoundComponent
   
   ],
   imports: [

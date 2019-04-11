@@ -35,10 +35,10 @@
                     <label> Contact Reference </label>
                     <div class="form-control" >
                       <label class="radio-inline">
-                        <input required type="radio" #contactPreference ="ngModel" [(ngModel)]="employee.contactPreference" value="email" name="contactPreference"> Email </label>
+                        <input [required] type="radio" #contactPreference ="ngModel" [(ngModel)]="employee.contactPreference" value="email" name="contactPreference"> Email </label>
                     
                         <label class="radio-inline">
-                          <input  required  #contactPreference ="ngModel" type="radio" [(ngModel)]="employee.contactPreference" value="phone" name="contactPreference"> Phone </label>
+                          <input  [required]  #contactPreference ="ngModel" type="radio" [(ngModel)]="employee.contactPreference" value="phone" name="contactPreference"> Phone </label>
                       </div>
                       contactPreference {{ contactPreference.value }}
                       <span class="help-block" *ngIf="contactPreference.invalid">
@@ -51,11 +51,11 @@
                     <div class="form-control">
                       <label class="radio-inline">
                         <input type="radio" name="gender" required #gender="ngModel"
-                               value="male" [(ngModel)]="employee.gender"> Male
+                               value="Male" [(ngModel)]="employee.gender"> Male
                       </label>
                       <label class="radio-inline">
                         <input type="radio" name="gender" required #gender="ngModel"
-                               value="female" [(ngModel)]="employee.gender"> Female
+                               value="Female" [(ngModel)]="employee.gender"> Female
                       </label>
                     </div>
                     <span class="help-block" *ngIf="gender.invalid">

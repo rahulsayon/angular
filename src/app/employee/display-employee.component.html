@@ -47,7 +47,7 @@
                     <span *ngSwitchCase="2">It  </span>
                     <span *ngSwitchCase="3">CSE  </span>
                     <span *ngSwitchDefault>Payroll </span>
-                    
+
               </div>
             </div> 
 
@@ -63,4 +63,18 @@
           </div>
       </div>
     </div>
-</div> 
+    <div class="panel-footer">
+      <button style="margin:2px" (click)="viewEmployee()"  class="btn b btn-primary"> View </button>
+      <button style="margin:2px"  (click)="editEmployee()"  class="btn b btn-primary"> Edit </button>
+     <span *ngIf="ConfirmDelete">
+       <span> Are You sure want to delete ?</span>
+       <button style="margin:2px"  (click)="deleteEmployee()" class="btn b btn-danger"> Yes </button>
+       <button style="margin:2px"  (click)="ConfirmDelete = false" class="btn b btn-danger"> No </button>
+
+      </span>
+      <span *ngIf="!ConfirmDelete">
+          <button style="margin:2px"  (click)="ConfirmDelete = true" class="btn b btn-danger"> Delete </button>
+
+      </span>
+    </div> 
+</div>
